@@ -1,0 +1,35 @@
+.project {
+  .caret-right {
+    border-left: 4px solid;
+    border-bottom: 4px solid transparent;
+    border-top: 4px solid transparent;
+    position: absolute;
+    left: 2%;
+    top: 45%;
+  }
+  .btn:hover .project-controls{
+    display:block;
+    margin-top: 10px;
+  }
+  .btn {
+    margin-top: 10px;
+    padding-bottom: 12px;
+  }
+  .project-controls{
+    display: none;
+  }
+  .glyphicon.glyphicon-trash {
+    font-size: 12px;
+  }
+  .glyphicon.glyphicon-pencil {
+    margin-right: 5px;
+    font-size: 12px;
+  }
+  .btn:focus {
+    outline: none;
+  }
+  .form-group {
+    margin-top: 12px;
+  }
+
+}

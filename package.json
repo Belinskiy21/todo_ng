@@ -1,7 +1,7 @@
 {
-  "name": "ng6-starter",
+  "name": "todo_ng",
   "version": "0.0.1",
-  "description": "Starter for Angular + ES6 + (Webpack or JSPM)",
+  "description": "Todo list",
   "main": "index.js",
   "dependencies": {
     "angular": "^1.5.0",
@@ -69,9 +69,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/angularclass/NG6-starter.git"
+    "url": "git+https://github.com/Belinskiy21/todo_ng.git"
   },
-  "author": "AngularClass",
+  "author": "Oleg Belinskyi",
   "license": "Apache-2.0",
   "babel": {
     "plugins": [
@@ -81,5 +81,9 @@
       "es2015",
       "stage-0"
     ]
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/Belinskiy21/todo_ng/issues"
+  },
+  "homepage": "https://github.com/Belinskiy21/todo_ng#readme"
 }

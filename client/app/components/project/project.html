@@ -1,0 +1,41 @@
+<navbar></navbar>
+<header>
+  <div class='row text-center'>
+    <div class='col-md-12 col-md-8'>
+      <h1>Projects</h1>
+    </div>
+  </div>
+</header>
+<pro class='project'>
+  <div class='row' ng-repeat= "project in model.projects">
+    <div class='col-md-3'></div>
+    <div class='col-md-6'>
+      <div class="dropdown">
+        <button class="btn btn-default  btn-outline-secondary btn-block " type="button">
+          <h4><small class="pull-left"><span class="caret-right "></span>
+            &emsp;{{ project.title }}</small></h4>
+            <span class="project-controls">
+              <i class="pull-right glyphicon glyphicon-trash"></i>
+              <i class="pull-right glyphicon glyphicon-pencil"></i>
+            </span>
+        </button>
+      </div>
+    </div>
+    <div class='col-md-3'></div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-6">
+      <div class="form-group" >
+        <input type="text" class="form-control" placeholder="Enter project name..." ng-model="model.title">
+      </div>
+      <button type="submit" class="btn btn-primary" ng-click = "model.addProject()">Create project</button>
+      <button type="button" class="btn btn-default" ng-click = "model.removeContent()">Cancel</button>
+    </div>
+    <div class="col-md-3">
+
+    </div>
+  </div>
+</pro>
