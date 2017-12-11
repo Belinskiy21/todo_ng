@@ -1,12 +1,14 @@
 @import '../common';
 
 .navbar {
-  height: 10rem;
+  height: 8rem;
   background-color: $navBgColor;
-  padding: 3rem;
+  padding: 1rem;
 
   .img {
-    width: 200px;
-    height: 50;
+    width: 130px;
+  }
+  .title {
+    font-size: 35px;
   }
 }

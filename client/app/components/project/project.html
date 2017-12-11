@@ -11,31 +11,34 @@
     <div class='col-md-3'></div>
     <div class='col-md-6'>
       <div class="dropdown">
-        <button class="btn btn-default  btn-outline-secondary btn-block " type="button">
+        <button class="btn btn-default btn-block " type="button" ng-hide="model.showEdit">
           <h4><small class="pull-left"><span class="caret-right "></span>
-            &emsp;{{ project.title }}</small></h4>
+            &emsp;{{ project.title }}</small>
+          </h4>
             <span class="project-controls">
-              <i class="pull-right glyphicon glyphicon-trash"></i>
-              <i class="pull-right glyphicon glyphicon-pencil"></i>
+              <i class="pull-right glyphicon glyphicon-trash" ng-click="model.deleteProject(project)"></i>
+              <i class="pull-right glyphicon glyphicon-pencil" ng-click="model.editProject(project)"></i>
             </span>
         </button>
+        </div>
       </div>
-    </div>
     <div class='col-md-3'></div>
   </div>
   <div class="row">
-    <div class="col-md-3">
-
-    </div>
+    <div class="col-md-3"></div>
     <div class="col-md-6">
-      <div class="form-group" >
-        <input type="text" class="form-control" placeholder="Enter project name..." ng-model="model.title">
+      <div ng-show="model.showEdit">
+        <input class="form-control"  type="text" ng-model="model.editTitle"><br>
+        <button  type="button" class="btn btn-primary pull-right" ng-click="model.Save()">Save</button>
       </div>
-      <button type="submit" class="btn btn-primary" ng-click = "model.addProject()">Create project</button>
-      <button type="button" class="btn btn-default" ng-click = "model.removeContent()">Cancel</button>
+      <div class="form-group" >
+        <input type="text" class="form-control" placeholder="Enter project name..." ng-model="model.title" ng-hide="model.showEdit">
+      </div>
+      <button type="submit" class="btn btn-primary" ng-click = "model.addProject()"
+      ng-hide="!model.title">Create project</button>
+      <button type="button" class="btn btn-default" ng-click = "model.removeContent()"
+      ng-hide="!model.title">Cancel</button>
     </div>
-    <div class="col-md-3">
-
-    </div>
+    <div class="col-md-3"></div>
   </div>
 </pro>
