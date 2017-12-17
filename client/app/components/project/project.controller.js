@@ -52,8 +52,8 @@ class ProjectController {
 
     model.showTasks = (project) => {
       model.visible = true
-      model.p = project
-      model.t = model.projects[model.projects.indexOf(project)].tasks
+      model.project = project
+      model.tasks = model.projects[model.projects.indexOf(project)].tasks
     }
 
     model.hideTasks = (project) => {
