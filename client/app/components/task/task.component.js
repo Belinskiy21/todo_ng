@@ -6,7 +6,8 @@ let taskComponent = {
   bindings: {},
   template,
   controllerAs: 'vm',
-  controller
+  controller,
+  inputs: ['tasks']
 };
 
 export default taskComponent;

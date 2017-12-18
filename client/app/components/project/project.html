@@ -25,10 +25,10 @@
           </span>
         </button>
         <!-- Tasks -->
-        <task>
-          
+        <task ng-show="model.visible" [tasks]="model.projectTasks">
+
         </task>
-        <!-- <div class='tasks' ng-repeat= "task in model.tasks" ng-show="model.visible">
+        <!-- <div class='tasks' ng-repeat= "task in model.projectTasks" ng-show="model.visible">
           <span ng-if="project === model.project">{{task.title}}</span>
         </div> -->
 
