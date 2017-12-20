@@ -4,7 +4,7 @@ import './task.scss';
 
 let taskComponent = {
   bindings: {
-    'tasks': '<',
+    'tasks': '=',
   },
   template,
   controllerAs: 'vm',
