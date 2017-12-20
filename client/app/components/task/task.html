@@ -1,6 +1,29 @@
 
-<tas>
+<tas class='task'>
   <div class='row' ng-repeat= "task in vm.tasks">
-    <span >{{task.title}}</span>
+    <div class='col-md-12'>
+        <button class="btn btn-default btn-block">
+            <input class="checkbox pull-left" type="checkbox" ng-model="task.done">
+            <span class="title done-{{task.done}} pull-left">{{task.title}}</span>
+          <span class="task-controls">
+            <i class="pull-right glyphicon glyphicon-trash" ng-click="vm.deleteTask(task)"></i>
+            <i class="pull-right glyphicon glyphicon-pencil" ng-click="vm.editTask(task)"></i>
+            <i class="pull-right glyphicon glyphicon-time"></i>
+            <i class="pull-right glyphicon glyphicon-comment"></i>
+            <i class="pull-right glyphicon glyphicon-arrow-up"></i>
+            <i class="pull-right glyphicon glyphicon-arrow-down"></i>
+          </span>
+        </button>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class='col-md-12'>
+      <div class="form-group" >
+        <input type="text" class="form-control" placeholder="Add task here..." ng-model="vm.task">
+      </div>
+      <button type="submit" class="btn btn-success" ng-click ="vm.addTask()" ng-show="vm.task">Create task</button>
+      <button type="button" class="btn btn-default" ng-click ="vm.cancelAddTask()" ng-show="vm.task">Cancel</button>
+    </div>
   </div>
 </tas>

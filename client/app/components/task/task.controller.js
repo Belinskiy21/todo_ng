@@ -1,12 +1,15 @@
 class TaskController {
-  constructor() {
+  constructor($uibModal) {
+    'ngInject';
+    this.$uibModal = $uibModal;
+
     this.name = 'task';
-    
+
   }
 
-  ngOnInit() {
-    console.log(this.tasks);
-  }
+  // $onInit() {
+  //   console.log(this.tasks);
+  // }
 
 
 }

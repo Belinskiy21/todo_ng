@@ -2,13 +2,14 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import taskComponent from './task.component';
 import uiBootstrap from 'angular-ui-bootstrap';
-import Project from '../project/project';
+import ngAnimate from 'angular-animate';
+
 
 
 let taskModule = angular.module('task', [
   uiRouter,
   uiBootstrap,
-  Project
+  ngAnimate
 ])
 
 .component('task', taskComponent)

@@ -1,3 +1,78 @@
+@import '../../common/common';
+
 .task {
-  color: red;
+  .title {
+    color: gray;
+    margin-top: 5px;
+  }
+
+  .checkbox {
+    margin-top: 10px;
+    margin-right: 5px;
+    margin-left: 25px;
+  }
+  .checkbox:focus {
+    outline: none;
+  }
+
+  .list-group-item {
+    margin-bottom: 1px;
+  }
+
+  .task-controls{
+    display: none;
+  }
+
+  .btn.btn-default:hover .task-controls{
+    display: block;
+  }
+
+  .glyphicon.glyphicon-trash {
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  .glyphicon.glyphicon-pencil {
+    margin-right: 5px;
+    font-size: 12px;
+    margin-top: 10px;
+  }
+
+  .glyphicon.glyphicon-time {
+    margin-right: 5px;
+    font-size: 12px;
+    margin-top: 10px;
+    color: gray;
+  }
+  .glyphicon.glyphicon-comment {
+    margin-right: 10px;
+    font-size: 12px;
+    margin-top: 10px;
+    color: gray;
+  }
+
+  .glyphicon.glyphicon-arrow-down {
+    margin-right: -10px;
+    font-size: 10px;
+    margin-top: 14px;
+    display:inline-block;
+    color: gray;
+  }
+  .glyphicon.glyphicon-arrow-up {
+    margin-right: 10px;
+    font-size: 10px;
+    margin-top: 0px;
+    color: gray;
+  }
+
+  .btn.btn-success {
+    margin-top: -20px;
+  }
+  .btn.btn-default {
+    margin-top: -10px;
+  }
+
+  .done-true {
+    text-decoration: line-through;
+    color: $bgColor;
+  }
 }

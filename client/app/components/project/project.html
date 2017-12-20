@@ -6,13 +6,12 @@
     </div>
   </div>
 </header>
-
 <pro class='project'>
   <div class='row' ng-repeat= "project in model.projects">
     <div class='col-md-3'></div>
     <div class='col-md-6'>
       <div class="dropdown">
-        <button class="btn btn-default btn-block " type="button" ng-hide="model.showEdit">
+        <button class="btn btn-primary project btn-block " type="button" ng-hide="model.showEdit">
           <h4><small class="pull-left" ng-click='model.showTasks(project)' ng-hide="model.visible">
             <span class="glyphicon glyphicon-triangle-right"></span>&emsp;{{ project.title }}</small>
           </h4>
@@ -25,34 +24,27 @@
           </span>
         </button>
         <!-- Tasks -->
-        <task ng-show="model.visible" [tasks]="model.projectTasks">
-
-        </task>
-        <!-- <div class='tasks' ng-repeat= "task in model.projectTasks" ng-show="model.visible">
-          <span ng-if="project === model.project">{{task.title}}</span>
-        </div> -->
-
+          <task ng-if="project === model.project" ng-show="model.visible" tasks="model.projectTasks" ng-hide="model.showEdit"></task>
       </div>
     </div>
     <div class='col-md-3'></div>
   </div>
-
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
       <!--Edit project-->
       <div ng-show="model.showEdit">
         <input class="form-control"  type="text" ng-model="model.editTitle">
-        <button  type="button" class="btn btn-primary pull-right" ng-click="model.Save()">Save</button>
-        <button type="button" class="btn btn-default pull-right" ng-click = "model.cancelEdit()">Cancel</button>
+        <button  type="button" class="btn btn-primary btn-sm pull-right" ng-click="model.Save()">Save</button>
+        <button type="button" class="btn btn-default btn-sm pull-right" ng-click = "model.cancelEdit()">Cancel</button>
       </div>
       <!--Add new project  -->
       <div class="form-group" >
         <input type="text" class="form-control" placeholder="Enter project name..." ng-model="model.title">
       </div>
-      <button type="submit" class="btn btn-primary" ng-click = "model.addProject()"
+      <button type="submit" class="btn btn-primary btn-sm" ng-click = "model.addProject()"
       ng-hide="!model.title">Create project</button>
-      <button type="button" class="btn btn-default" ng-click = "model.removeContent()"
+      <button type="button" class="btn btn-default btn-sm" ng-click = "model.removeContent()"
       ng-hide="!model.title">Cancel</button>
     </div>
     <div class="col-md-3"></div>

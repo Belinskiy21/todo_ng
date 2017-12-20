@@ -3,11 +3,12 @@ import controller from './task.controller';
 import './task.scss';
 
 let taskComponent = {
-  bindings: {},
+  bindings: {
+    'tasks': '<',
+  },
   template,
   controllerAs: 'vm',
-  controller,
-  inputs: ['tasks']
+  controller
 };
 
 export default taskComponent;
