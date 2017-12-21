@@ -10,12 +10,12 @@
   <div class='row'>
     <div class='col-md-3'></div>
     <div class='col-md-6'>
-      <!--Edit project-->
-      <div ng-show="model.showEdit">
-        <input class="form-control"  type="text" ng-model="model.editTitle">
-        <button  type="button" class="btn btn-primary btn-sm pull-right" ng-click="model.Save()">Save</button>
-        <button type="button" class="btn btn-default btn-sm pull-right" ng-click = "model.cancelEdit()">Cancel</button>
-      </div>
+      <!--Edit project form-->
+        <form name"editProject" ng-show="model.showEdit" ng-submit="model.Save()" >
+          <input class="form-control project"  type="text" ng-model="model.editTitle" required>
+          <button  type="submit" class="btn btn-primary btn-sm pull-right">Save</button>
+          <button type="button" class="btn btn-default btn-sm pull-right" ng-click = "model.cancelEdit()">Cancel</button>
+        </form>
     </div>
     <div class='col-md-3'></div>
   </div>
@@ -47,7 +47,7 @@
     <div class="col-md-6">
       <!--Add new project  -->
       <div class="form-group" >
-        <input type="text" class="form-control" placeholder="Enter project name..." ng-model="model.title">
+        <input type="text" class="form-control" placeholder="Enter project name..." ng-model="model.title" required>
       </div>
       <button type="submit" class="btn btn-primary btn-sm" ng-click = "model.addProject()"
       ng-hide="!model.title">Create project</button>

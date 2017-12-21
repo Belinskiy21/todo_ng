@@ -5,20 +5,20 @@ class ProjectController {
       {
         'id': 1,
         'title': 'My first project',
-        'tasks': [ {'title': 'first task'}, {'title': 'second task'},
-{'title': 'one more task'} ]
+        'tasks': [ {'id': 1, 'title': 'first task'}, {'id': 2, 'title': 'second task'},
+{ 'id': 3, 'title': 'one more task'} ]
       },
       {
         'id': 2,
         'title': 'My second project',
-        'tasks': [ {'title': '2 pr first task'} ,{'title': '2 pr second task'},
-{'title': '2 pr one more task'} ]
+        'tasks': [ { 'id': 1, 'title': '2 pr first task'} ,{ 'id': 2, 'title': '2 pr second task'},
+{ 'id': 3, 'title': '2 pr one more task'} ]
       },
       {
         'id': 3,
         'title': 'My another project',
-        'tasks': [ {'title': '3 pr first task'}, {'title': '3 pr second task'},
-{'title': '3 pr one more task'} ]
+        'tasks': [ { 'id': 1, 'title': '3 pr first task'}, { 'id': 2, 'title': '3 pr second task'},
+{'id': 3, 'title': '3 pr one more task'} ]
       }
     ]
   }
@@ -31,7 +31,7 @@ class ProjectController {
     this.title = ''
   }
   deleteProject(project){
-    if (confirm("sure to delete?"))
+    if (confirm("sure to delete project?"))
     this.projects.splice(this.projects.indexOf(project), 1 )
   }
   editProject(project) {

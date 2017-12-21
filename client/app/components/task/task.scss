@@ -75,4 +75,13 @@
     text-decoration: line-through;
     color: $bgColor;
   }
+
+  .btn.btn-default.btn-sm {
+    margin-top: 5px;
+  }
+
+  .form-control.task{
+    padding-bottom: 20px;
+    padding-top: 20px;
+  }
 }
