@@ -24,7 +24,7 @@ class ProjectController {
   }
   addProject() {
     if(!this.title || this.title === '') { return }
-    this.projects.push({title: this.title})
+    this.projects.push({id: this.projects.length + 1, title: this.title, tasks: []})
     this.title = ''
   }
   removeContent() {
