@@ -5,7 +5,7 @@ class ProjectController {
       {
         'id': 1,
         'title': 'My first project',
-        'tasks': [ {'id': 1, 'title': 'first task'}, {'id': 2, 'title': 'second task'},
+        'tasks': [ {'id': 1, 'title': 'first task'}, {'id': 2, 'title': 'second task' },
 { 'id': 3, 'title': 'one more task'} ]
       },
       {
@@ -61,7 +61,6 @@ class ProjectController {
   hideTasks(project) {
     this.visible = false
   }
-
 }
 
 export default ProjectController;

@@ -37,6 +37,32 @@ class TaskController {
     this.tasks.push(this.newTask)
     this.showField = false
   }
+
+  Up(task) {
+    this.oldIndex = this.tasks.indexOf(task)
+    if (this.oldIndex > 0){
+      this.newIndex = this.oldIndex - 1
+      this.tasksClone = this.tasks.slice()
+      this.removedTask = this.tasksClone.splice(this.oldIndex, 1)
+      this.tasksClone.splice(this.newIndex, 0, this.removedTask[0])
+      this.tasks = this.tasksClone
+      return this.tasks
+    }
+    return this.tasks
+  }
+
+  Down(task) {
+    this.oldIndex = this.tasks.indexOf(task)
+    if (this.oldIndex < this.tasks.length){
+      this.newIndex = this.oldIndex + 1
+      this.tasksClone = this.tasks.slice()
+      this.removedTask = this.tasksClone.splice(this.oldIndex, 1)
+      this.tasksClone.splice(this.newIndex, 0, this.removedTask[0])
+      this.tasks = this.tasksClone
+      return this.tasks
+    }
+    return this.tasks
+  }
 }
 
 export default TaskController;

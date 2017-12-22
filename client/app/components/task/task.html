@@ -10,7 +10,7 @@
       </form>
     </div>
   </div>
-  <div class='row' ng-repeat= "task in vm.tasks | orderBy: 'id' ">
+  <div class='row' ng-repeat= "task in vm.tasks ">
     <div  id="taskList" class='col-md-12'>
         <button class="btn btn-default btn-block">
             <input class="checkbox pull-left" type="checkbox" ng-model="task.done">
@@ -20,8 +20,8 @@
             <i class="pull-right glyphicon glyphicon-pencil" ng-click="vm.editTask(task)"></i>
             <i class="pull-right glyphicon glyphicon-time"></i>
             <i class="pull-right glyphicon glyphicon-comment"></i>
-            <i class="pull-right glyphicon glyphicon-arrow-up"></i>
-            <i class="pull-right glyphicon glyphicon-arrow-down"></i>
+            <i class="pull-right glyphicon glyphicon-arrow-up" ng-click="vm.Up(task)"></i>
+            <i class="pull-right glyphicon glyphicon-arrow-down" ng-click="vm.Down(task)"></i>
           </span>
         </button>
     </div>
