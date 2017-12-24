@@ -1,24 +1,24 @@
 class ProjectController {
   constructor() {
-
+    this.date = new Date()
     this.projects = [
       {
         'id': 1,
         'title': 'My first project',
-        'tasks': [ {'id': 1, 'title': 'first task'}, {'id': 2, 'title': 'second task' },
-{ 'id': 3, 'title': 'one more task'} ]
+        'tasks': [ {'id': 1, 'title': 'first task', 'deadline': {} }, {'id': 2, 'title': 'second task', 'deadline': {} },
+{ 'id': 3, 'title': 'one more task', 'deadline': {} } ]
       },
       {
         'id': 2,
         'title': 'My second project',
-        'tasks': [ { 'id': 1, 'title': '2 pr first task'} ,{ 'id': 2, 'title': '2 pr second task'},
-{ 'id': 3, 'title': '2 pr one more task'} ]
+        'tasks': [ { 'id': 1, 'title': '2 pr first task', 'deadline': {}} ,{ 'id': 2, 'title': '2 pr second task', 'deadline': {}},
+{ 'id': 3, 'title': '2 pr one more task', 'deadline': {}} ]
       },
       {
         'id': 3,
         'title': 'My another project',
-        'tasks': [ { 'id': 1, 'title': '3 pr first task'}, { 'id': 2, 'title': '3 pr second task'},
-{'id': 3, 'title': '3 pr one more task'} ]
+        'tasks': [ { 'id': 1, 'title': '3 pr first task', 'deadline': {}}, { 'id': 2, 'title': '3 pr second task', 'deadline': {}},
+{'id': 3, 'title': '3 pr one more task', 'deadline': {}} ]
       }
     ]
   }
@@ -60,6 +60,18 @@ class ProjectController {
 
   hideTasks(project) {
     this.visible = false
+  }
+
+  openDatepicker(status, task) {
+    this.isOpen = status
+    this.currentTask= task
+    if(this.date) {
+      this.currentTask.deadline = this.date
+    }
+    else {
+      this.currentTask.deadline = null
+    }
+    console.log(this.currentTask.deadline)
   }
 }
 

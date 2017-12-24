@@ -4,7 +4,6 @@ import './project.scss';
 
 let projectComponent = {
   bindings: {
-
   },
   template,
   controllerAs: 'model',

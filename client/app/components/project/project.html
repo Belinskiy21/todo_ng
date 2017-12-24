@@ -37,10 +37,16 @@
           </span>
         </button>
         <!-- Tasks -->
-          <task ng-if="project === model.project" ng-show="model.visible" tasks="model.projectTasks"></task>
+          <task ng-if="project === model.project" ng-show="model.visible"
+tasks="model.projectTasks" opened="model.isOpen" deadline = "model.currentTask.deadline" on-open-datepicker="model.openDatepicker(status, task)"></task>
       </div>
     </div>
-    <div class='col-md-3'></div>
+    <!-- Date picker -->
+    <span ng-if="project === model.project">
+    <div class='col-md-3' ng-show="model.isOpen">
+      <h4>Choose deadline:</h4>
+      <md-datepicker ng-model="model.date" md-placeholder="Enter date..."></md-datepicker></div>
+    </span>
   </div>
   <div class="row">
     <div class="col-md-3"></div>

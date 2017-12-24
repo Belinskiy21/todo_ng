@@ -5,6 +5,10 @@ class TaskController {
 
     this.name = 'task';
 
+    this.myDate = new Date();
+    this.open = true;
+    this.close = false;
+
   }
 
   // $onInit() {
@@ -12,7 +16,7 @@ class TaskController {
   // }
   addTask() {
     if(!this.taskTitle || this.taskTitle === '') { return }
-    this.tasks.push({ id: this.tasks.length + 1, title: this.taskTitle })
+    this.tasks.push({ id: this.tasks.length + 1, title: this.taskTitle , deadline: {} })
     this.taskTitle = ''
   }
   removeContent() {

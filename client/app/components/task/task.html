@@ -1,4 +1,5 @@
 
+
 <tas class='task'>
   <!--Edit task form-->
   <div id="taskEdit" class='row' ng-show="vm.showField">
@@ -16,9 +17,11 @@
             <input class="checkbox pull-left" type="checkbox" ng-model="task.done">
             <span class="title done-{{task.done}} pull-left">{{task.title}}</span>
           <span class="task-controls">
+            <span class="date pull-left">{{task.deadline.toDateString()}}</span>
             <i class="pull-right glyphicon glyphicon-trash" ng-click="vm.deleteTask(task)"></i>
             <i class="pull-right glyphicon glyphicon-pencil" ng-click="vm.editTask(task)"></i>
-            <i class="pull-right glyphicon glyphicon-time"></i>
+            <i class="pull-right glyphicon glyphicon-time" ng-click="vm.onOpenDatepicker({ status: vm.open, task: task})" ng-hide="vm.opened"></i>
+            <i class="pull-right glyphicon glyphicon-time" ng-click="vm.onOpenDatepicker({ status: vm.close, task: task})" ng-show="vm.opened"></i>
             <i class="pull-right glyphicon glyphicon-comment"></i>
             <i class="pull-right glyphicon glyphicon-arrow-up" ng-click="vm.Up(task)"></i>
             <i class="pull-right glyphicon glyphicon-arrow-down" ng-click="vm.Down(task)"></i>

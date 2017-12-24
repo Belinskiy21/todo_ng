@@ -4,14 +4,14 @@ import Common from './common/common';
 import Components from './components/components';
 import AppComponent from './app.component';
 import uiBootstrap from 'angular-ui-bootstrap';
-import ngAnimate from 'angular-animate';
-
-import 'normalize.css';
+import ngMaterial from 'angular-material';
+import 'angular-material/angular-material.css';
+// import 'normalize.css';
 
 angular.module('app', [
     uiRouter,
     uiBootstrap,
-    ngAnimate,
+    ngMaterial,
     Common,
     Components
   ])

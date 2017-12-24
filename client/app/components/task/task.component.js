@@ -5,6 +5,9 @@ import './task.scss';
 let taskComponent = {
   bindings: {
     'tasks': '=',
+    'opened': '=',
+    'deadline': '=',
+    onOpenDatepicker : '&'
   },
   template,
   controllerAs: 'vm',
