@@ -22,7 +22,7 @@
             <i class="pull-right glyphicon glyphicon-pencil" ng-click="vm.editTask(task)"></i>
             <i class="pull-right glyphicon glyphicon-time" ng-click="vm.onOpenDatepicker({ status: vm.open, task: task})" ng-hide="vm.opened"></i>
             <i class="pull-right glyphicon glyphicon-time" ng-click="vm.onOpenDatepicker({ status: vm.close, task: task})" ng-show="vm.opened"></i>
-            <i class="pull-right glyphicon glyphicon-comment"></i>
+            <i class="pull-right glyphicon glyphicon-comment" ng-click="vm.openModal(task)"></i>
             <i class="pull-right glyphicon glyphicon-arrow-up" ng-click="vm.Up(task)"></i>
             <i class="pull-right glyphicon glyphicon-arrow-down" ng-click="vm.Down(task)"></i>
           </span>
@@ -39,4 +39,17 @@
       <button type="button" class="btn btn-default" ng-click ="vm.removeContent()" ng-show="vm.taskTitle">Cancel</button>
     </div>
   </div>
+  <script type="text/ng-template" id="modal.html">
+    <div class="modal-header">
+      <i class="pull-right glyphicon glyphicon-remove" ng-click="close()"></i>
+      <h3 class="modal-title">Add comment</h3>
+    </div>
+
+    <div class="modal-body">
+      I'm a modal!
+    </div>
+
+    <div class="modal-footer">
+    </div>
+  </script>
 </tas>

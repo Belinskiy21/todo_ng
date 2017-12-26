@@ -16,7 +16,7 @@ class TaskController {
   // }
   addTask() {
     if(!this.taskTitle || this.taskTitle === '') { return }
-    this.tasks.push({ id: this.tasks.length + 1, title: this.taskTitle , deadline: {} })
+    this.tasks.push({ id: this.tasks.length + 1, title: this.taskTitle , deadline: {}, done: false, comments: [] })
     this.taskTitle = ''
   }
   removeContent() {
@@ -67,6 +67,19 @@ class TaskController {
     }
     return this.tasks
   }
+
+  openModal(task) {
+    this.$uibModal.open({
+      templateUrl: 'modal.html',
+      controller: ['$uibModalInstance','$scope', Controller]
+    })
+    function Controller(uibModalInstance, scope) {
+      scope.close = () => {
+        uibModalInstance.close();
+      }
+    }
+  }
+
 }
 
 export default TaskController;
