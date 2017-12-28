@@ -6,14 +6,14 @@ class ProjectController {
         'id': 1,
         'title': 'My first project',
         'tasks': [ {'id': 1, 'title': 'first task', 'deadline': {}, 'done': false,
-'comments': [{ 'id': 1, 'text': 'first comment for first task', 'file': ''},
-{ 'id': 2, 'text': 'second comment for first task', 'file': ''},
-{ 'id': 3, 'text': 'third comment for first task', 'file': ''}] },
+'comments': [{ 'id': 1, 'text': 'first comment for first task', 'file': '', 'create_at': '27.12.2017'},
+{ 'id': 2, 'text': 'second comment for first task', 'file': '', 'create_at': '27.12.2017'},
+{ 'id': 3, 'text': 'third comment for first task', 'file': '', 'create_at': '27.12.2017'}] },
 {'id': 2, 'title': 'second task', 'deadline': {}, 'done': false,
-'comments': [{ 'id': 1, 'text': 'first comment for 2 task', 'file': ''},
-{ 'id': 2, 'text': 'second comment for 2 task', 'file': ''}] },
+'comments': [{ 'id': 1, 'text': 'first comment for 2 task', 'file': '', 'create_at': '27.12.2017'},
+{ 'id': 2, 'text': 'second comment for 2 task', 'file': '', 'create_at': '27.12.2017'}] },
 { 'id': 3, 'title': 'one more task', 'deadline': {}, 'done': false,
-'comments': [{ 'id': 1, 'text': 'one comment for one more task', 'file': ''}] } ]
+'comments': [{ 'id': 1, 'text': 'one comment for one more task', 'file': '', 'create_at': '27.12.2017'}] } ]
       },
       {
         'id': 2,

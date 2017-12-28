@@ -1,0 +1,9 @@
+<div class="comments">
+  <div class="form-group">
+    <textarea class="form-control" rows="3" id="comment" placeholder="Enter your comment..." ng-model="$ctrl.comment">
+    </textarea>
+    <span class="glyphicon glyphicon-paperclip pull-right" ng-click ="$ctrl.addFile()"></span>
+    <button type="button" class="btn btn-default pull-right" ng-click ="$ctrl.cancelComment()">Cancel</button>
+    <button type="button" class="btn btn-primary pull-right" ng-click ="$ctrl.saveComment(comment)">Save</button>
+  </div>
+</div>

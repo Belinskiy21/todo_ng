@@ -1,9 +1,8 @@
 class TaskController {
-  constructor($uibModal) {
+  constructor($uibModal, Comments) {
     'ngInject';
     this.$uibModal = $uibModal;
-
-    this.name = 'task';
+    this.Comments = Comments;
 
     this.myDate = new Date();
     this.open = true;
@@ -69,13 +68,19 @@ class TaskController {
   }
 
   openModal(task) {
+    this.Comments.comments = task.comments
     this.$uibModal.open({
       templateUrl: 'modal.html',
-      controller: ['$uibModalInstance','$scope', Controller]
+      controller: ['$uibModalInstance','$scope', 'Comments', Controller]
     })
-    function Controller(uibModalInstance, scope) {
+    function Controller(uibModalInstance, scope, Comments) {
       scope.close = () => {
         uibModalInstance.close();
+      }
+      scope.comments = Comments.comments;
+
+      scope.deleteComment = (comment) => {
+        scope.comments.splice(scope.comments.indexOf(comment), 1);
       }
     }
   }
