@@ -1,9 +1,11 @@
 <div class="comments">
-  <div class="form-group">
-    <textarea class="form-control" rows="3" id="comment" placeholder="Enter your comment..." ng-model="$ctrl.comment">
+  <form class="form-group" ng-submit="$ctrl.saveComment(comment)">
+    <textarea class="form-control" rows="3" id="comment" placeholder="Enter your comment..." ng-model="$ctrl.comment" required>
     </textarea>
-    <span class="glyphicon glyphicon-paperclip pull-right" ng-click ="$ctrl.addFile()"></span>
+
+    <span class="glyphicon glyphicon-paperclip pull-right" ngf-select="upload($file, comment)"></span>
+
     <button type="button" class="btn btn-default pull-right" ng-click ="$ctrl.cancelComment()">Cancel</button>
-    <button type="button" class="btn btn-primary pull-right" ng-click ="$ctrl.saveComment(comment)">Save</button>
-  </div>
+    <button type="submit" class="btn btn-primary pull-right">Save</button>
+  </form>
 </div>

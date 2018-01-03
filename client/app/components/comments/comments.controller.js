@@ -1,5 +1,7 @@
 class CommentsController {
-  constructor() {
+  constructor(Upload) {
+    'ngInject';
+    this.Upload = Upload;
     this.name = 'comments';
     this.date = new Date();
 
@@ -14,6 +16,16 @@ class CommentsController {
   cancelComment() {
     this.comment = ''
   }
+
+  upload(file, comment) {
+        this.Upload.upload({
+            url: './img',
+            data: {file: file}
+        })
+        this.comment.file = file
+    }
+
+
 }
 
 export default CommentsController;

@@ -1,0 +1,12 @@
+@import "../../common/common";
+
+.signup {
+  color: gray;
+  .btn {
+    width: 100px;
+    background-color: $primaryColor;
+  }
+  .form-control {
+    height: 45px;
+  }
+}

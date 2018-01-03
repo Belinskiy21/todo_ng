@@ -61,7 +61,8 @@
             <ul style="list-style-type: none;" ng-repeat="comment in comments">
               <li><small class="pull-left">{{comment.create_at}}</small><i ng-if="comment.create_at" class="glyphicon glyphicon-trash pull-left" style=" margin-left: 10px; font-size: 15px; color: gray; cursor: pointer;" ng-click="deleteComment(comment)"></i><br>
                 <small class="pull-left"><h5>{{comment.text}}</h5></small><br>
-                <span class="pull-left">{{comment.file}}</span><br>
+                <!-- <span class="pull-left">{{comment.file}}</span><br> -->
+                <span ngf-thumbnail="comment.file"  ng-if="comment.file"></span><br>
               </li>
             </ul>
           </div>

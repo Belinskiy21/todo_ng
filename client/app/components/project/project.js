@@ -15,7 +15,7 @@ let projectModule = angular.module('project', [
 .config(($stateProvider, $urlRouterProvider) => {
   "ngInject";
 
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/login');
 
   $stateProvider
     .state('projects', {
