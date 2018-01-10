@@ -1,10 +1,12 @@
 class LoginController {
   constructor() {
+    'ngInject';
+
     this.name = 'login';
   }
 
   login() {
-    console.log('send request to server...  ')
+    
   }
 }
 
