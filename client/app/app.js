@@ -21,8 +21,8 @@ angular.module('app', [
     return {
       request: function(config) {
         config.headers = config.headers || {};
-        if(localStorage.auth_token) {
-          config.headers.token = localStorage.auth_token;
+        if(localStorage.authToken) {
+          config.headers['Authorization'] = 'Bearer ' + localStorage.authToken;
         }
         return config;
       }
