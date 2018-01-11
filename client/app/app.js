@@ -17,8 +17,21 @@ angular.module('app', [
     Common,
     Components
   ])
-  .config(($locationProvider) => {
+  .factory('authInterceptor', function() {
+    return {
+      request: function(config) {
+        config.headers = config.headers || {};
+        if(localStorage.auth_token) {
+          config.headers.token = localStorage.auth_token;
+        }
+        return config;
+      }
+    }
+
+  })
+  .config(($locationProvider,$httpProvider) => {
     "ngInject";
+    $httpProvider.interceptors.push('authInterceptor');
     // @see: https://github.com/angular-ui/ui-router/wiki/Frequently-Asked-Questions
     // #how-to-configure-your-server-to-work-with-html5mode
     $locationProvider.html5Mode(true).hashPrefix('!');
