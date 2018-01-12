@@ -19,7 +19,7 @@ angular.module('app', [
   ])
   .factory('authInterceptor', function($location, $q) {
     'ngInject';
-    
+
     return {
       request: function(config) {
         config.headers = config.headers || {};
@@ -32,7 +32,7 @@ angular.module('app', [
         if(response.status === 401){
           $location.path('/login');
         }
-        return $q.reject(respose);
+        return $q.reject(response);
       }
     }
 

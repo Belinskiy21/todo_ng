@@ -7,12 +7,15 @@
     <div class="col-md-4"></div>
     <div class="col-md-4 centre">
       <form class="form" name="loginForm" ng-submit="ln.login()">
-        <div class="form-group">
-          <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email"
-          ng-model="ln.user.email" required>
+        <div class="alert alert-danger" ng-show='ln.message'>
+          {{ln.message}}
         </div>
         <div class="form-group">
-          <input type="password" class="form-control" id="InputPassword" placeholder="Password" ng-model="ln.user.password" required>
+          <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email"
+          ng-model="ln.email" required>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" id="InputPassword" placeholder="Password" ng-model="ln.password" required>
         </div>
         <button type="submit" class="btn btn-primary">Log In</button><br />
         <br />
