@@ -17,7 +17,9 @@ angular.module('app', [
     Common,
     Components
   ])
-  .factory('authInterceptor', function() {
+  .factory('authInterceptor', function($location, $q) {
+    'ngInject';
+    
     return {
       request: function(config) {
         config.headers = config.headers || {};
@@ -25,6 +27,12 @@ angular.module('app', [
           config.headers['Authorization'] = 'Bearer ' + localStorage.authToken;
         }
         return config;
+      },
+      responseError: function (response) {
+        if(response.status === 401){
+          $location.path('/login');
+        }
+        return $q.reject(respose);
       }
     }
 
