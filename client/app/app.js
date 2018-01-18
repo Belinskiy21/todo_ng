@@ -5,7 +5,8 @@ import Components from './components/components';
 import AppComponent from './app.component';
 import uiBootstrap from 'angular-ui-bootstrap';
 import ngMaterial from 'angular-material';
-import ngFileUpload from 'ng-file-upload'
+import ngFileUpload from 'ng-file-upload';
+import ngResource from 'angular-resource';
 import 'angular-material/angular-material.css';
 // import 'normalize.css';
 
@@ -14,6 +15,7 @@ angular.module('app', [
     uiBootstrap,
     ngMaterial,
     ngFileUpload,
+    ngResource,
     Common,
     Components
   ])

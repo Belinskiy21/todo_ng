@@ -23,6 +23,17 @@ let projectModule = angular.module('project', [
       component: 'project'
     });
 })
+.factory('Project', function($resource) {
+  'ngInject';
+  let API_URL = 'http://localhost:3000';
+  return $resource(
+    API_URL + '/api/v1/projects/:id', { id: '@id' }, {
+      update: {
+        method: 'PUT'
+      }
+    }
+  )
+})
 .component('project', projectComponent)
 
 .name;
