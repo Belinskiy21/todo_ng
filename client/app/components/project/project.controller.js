@@ -36,6 +36,7 @@ class ProjectController {
   }
 
   showTasks(project) {
+    this.project_id = project.id
     this.visible = true
     this.project = project
     this.projectTasks = this.projects[this.projects.indexOf(project)].tasks

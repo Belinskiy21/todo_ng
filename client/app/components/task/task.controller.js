@@ -1,8 +1,10 @@
 class TaskController {
-  constructor($uibModal, Comments) {
+  constructor($uibModal, $http, Comments) {
     'ngInject';
     this.$uibModal = $uibModal;
+    this.$http = $http;
     this.Comments = Comments;
+    this.API_URL = 'http://localhost:3000';
 
     this.myDate = new Date();
     this.open = true;
@@ -67,8 +69,18 @@ class TaskController {
     return this.tasks
   }
 
-  openModal(task) {
-    this.Comments.comments = task.comments
+  openComments(task) {
+    var self = this;
+    this.$http.get(this.API_URL + `/api/v1/projects/${this.projectid}/tasks/${task.id}/comments`).then(
+      (response) => {
+        self.comments = response.data
+        self.openModal()
+      }
+    )
+  }
+
+  openModal() {
+    this.Comments.comments = this.comments
     this.$uibModal.open({
       templateUrl: 'modal.html',
       controller: ['$uibModalInstance','$scope', 'Comments', Controller]

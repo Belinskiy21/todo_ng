@@ -5,6 +5,7 @@ import './task.scss';
 let taskComponent = {
   bindings: {
     'tasks': '=',
+    'projectid': '=',
     'opened': '=',
     'deadline': '=',
     onOpenDatepicker : '&'
