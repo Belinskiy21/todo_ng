@@ -29,7 +29,7 @@
             <span class="glyphicon glyphicon-triangle-right"></span>&emsp;{{ project.title }}</small>
           </h4>
           <h4><small class="pull-left" ng-click='model.hideTasks(project)' ng-show="model.visible">
-            <span class="glyphicon" ng-class="project === model.project  ? 'glyphicon-triangle-bottom' : 'glyphicon-triangle-right'"></span>&emsp;{{ project.title }}</small>
+            <span class="glyphicon" ng-class="project === model.current_project  ? 'glyphicon-triangle-bottom' : 'glyphicon-triangle-right'"></span>&emsp;{{ project.title }}</small>
           </h4>
           <span class="project-controls">
             <i class="pull-right glyphicon glyphicon-trash" ng-click="model.deleteProject(project)"></i>
@@ -37,12 +37,12 @@
           </span>
         </button>
         <!-- Tasks -->
-          <task ng-if="project === model.project" ng-show="model.visible"
+          <task ng-if="project === model.current_project" ng-show="model.visible"
 tasks="model.projectTasks" projectid="model.project_id" opened="model.isOpen" deadline = "model.currentTask.deadline" on-open-datepicker="model.openDatepicker(status, task)"></task>
       </div>
     </div>
     <!-- Date picker -->
-    <span ng-if="project === model.project">
+    <span ng-if="project === model.current_project">
     <div class='col-md-3' ng-show="model.isOpen">
       <h4>Choose deadline:</h4>
       <md-datepicker ng-model="model.date" md-placeholder="Enter date..."></md-datepicker></div>
@@ -52,13 +52,13 @@ tasks="model.projectTasks" projectid="model.project_id" opened="model.isOpen" de
     <div class="col-md-3"></div>
     <div class="col-md-6">
       <!--Add new project  -->
-      <div class="form-group" >
-        <input type="text" class="form-control" placeholder="Enter project name..." ng-model="model.title" required>
-      </div>
-      <button type="submit" class="btn btn-primary btn-sm" ng-click = "model.addProject()"
-      ng-hide="!model.title">Create project</button>
-      <button type="button" class="btn btn-default btn-sm" ng-click = "model.removeContent()"
-      ng-hide="!model.title">Cancel</button>
+      <form name"addProject" ng-submit="model.addProject()">
+        <input type="text" class="form-control" placeholder="Enter project name..." ng-model="model.project.title" required>
+        <button type="submit" class="btn btn-primary btn-sm"
+        ng-hide="!model.project.title">Create project</button>
+        <button type="button" class="btn btn-default btn-sm" ng-click = "model.removeContent()"
+        ng-hide="!model.project.title">Cancel</button>
+      </form>
     </div>
     <div class="col-md-3"></div>
   </div>

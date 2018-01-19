@@ -1,17 +1,23 @@
 class ProjectController {
-  constructor($http, Project) {
+  constructor($http, $location, Project) {
     'ngInject';
+    this.$location = $location;
     this.Project = Project;
     this.date = new Date()
     this.projects = this.Project.query()
+    this.project = new this.Project()
   }
   addProject() {
-    if(!this.title || this.title === '') { return }
-    this.projects.push({id: this.projects.length + 1, title: this.title, tasks: []})
-    this.title = ''
+    var self = this;
+    if(!this.project.title || this.project.title === '') { return }
+    this.project.$save(function(){
+      self.projects = self.Project.query()
+      self.removeContent()
+      self.project = new self.Project()
+    })
   }
   removeContent() {
-    this.title = ''
+    this.project.title = ''
   }
   deleteProject(project){
     if (confirm("sure to delete project?"))
@@ -38,7 +44,7 @@ class ProjectController {
   showTasks(project) {
     this.project_id = project.id
     this.visible = true
-    this.project = project
+    this.current_project = project
     this.projectTasks = this.projects[this.projects.indexOf(project)].tasks
   }
 
