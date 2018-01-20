@@ -29,7 +29,7 @@ let projectModule = angular.module('project', [
   return $resource(
     API_URL + '/api/v1/projects/:id', { id: '@id' }, {
       update: {
-        method: 'PUT'
+        method: 'PUT', params: {}
       }
     }
   )

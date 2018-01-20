@@ -12,8 +12,8 @@ class ProjectController {
     if(!this.project.title || this.project.title === '') { return }
     this.project.$save(function(){
       self.projects = self.Project.query()
-      self.removeContent()
       self.project = new self.Project()
+      self.removeContent()
     })
   }
   removeContent() {
@@ -25,20 +25,22 @@ class ProjectController {
   }
   editProject(project) {
     this.showEdit = true
-    this.editTitle = project.title
-    this.helpEdit = project
-    this.projectTasks = project.tasks
+    this.project.title = project.title
+    this.project.id = project.id
+    // this.projectTasks = project.tasks
   }
   Save() {
-    this.newProject = { "id": this.helpEdit.id, "title": this.editTitle,
-"tasks": this.projectTasks }
-    this.editTitle = this.projects.splice( this.projects.indexOf(this.helpEdit), 1 )
-    this.projects.push(this.newProject)
-    this.editTitle=""
-    this.showEdit = false
+    var self = this;
+    if(!this.project.title || this.project.title === '') { return }
+    this.project.$update({ id: this.project.id },function(){
+      self.projects = self.Project.query()
+      self.removeContent()
+      self.showEdit = false
+    })
   }
   cancelEdit() {
     this.showEdit = false
+    this.removeContent()
   }
 
   showTasks(project) {
