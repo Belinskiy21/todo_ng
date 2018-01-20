@@ -20,19 +20,22 @@ class ProjectController {
     this.project.title = ''
   }
   deleteProject(project){
+    var self = this;
     if (confirm("sure to delete project?"))
-    this.projects.splice(this.projects.indexOf(project), 1 )
+      project.$delete({ id: project.id },function(){
+        self.projects = self.Project.query()
+      })
   }
   editProject(project) {
     this.showEdit = true
     this.project.title = project.title
-    this.project.id = project.id
+    this.current_id = project.id
     // this.projectTasks = project.tasks
   }
   Save() {
     var self = this;
     if(!this.project.title || this.project.title === '') { return }
-    this.project.$update({ id: this.project.id },function(){
+    this.project.$update({ id: this.current_id },function(){
       self.projects = self.Project.query()
       self.removeContent()
       self.showEdit = false
