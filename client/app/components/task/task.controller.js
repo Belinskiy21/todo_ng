@@ -25,7 +25,7 @@ class TaskController {
   }
 
   removeContent() {
-    this.taskTitle = ''
+    this.task.title = ''
   }
 
   deleteTask(task){
