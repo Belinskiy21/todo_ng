@@ -1,8 +1,9 @@
 class ProjectController {
-  constructor($http, $location, Project) {
+  constructor($http, $location, Project, Task) {
     'ngInject';
     this.$location = $location;
     this.Project = Project;
+    this.Task = Task;
     this.date = new Date()
     this.projects = this.Project.query()
     this.project = new this.Project()
@@ -50,7 +51,7 @@ class ProjectController {
     this.project_id = project.id
     this.visible = true
     this.current_project = project
-    this.projectTasks = this.projects[this.projects.indexOf(project)].tasks
+    this.projectTasks = this.Task.query({ project_id: project.id })
   }
 
   hideTasks(project) {

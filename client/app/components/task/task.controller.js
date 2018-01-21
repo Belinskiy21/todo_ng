@@ -1,21 +1,29 @@
 class TaskController {
-  constructor($uibModal, $http, Comments) {
+  constructor($uibModal, $http, Comments, Task) {
     'ngInject';
+
     this.$uibModal = $uibModal;
     this.$http = $http;
     this.Comments = Comments;
+    this.Task = Task;
     this.API_URL = 'http://localhost:3000';
-
+    this.task = new this.Task()
     this.myDate = new Date();
     this.open = true;
     this.close = false;
 
   }
+
   addTask() {
-    if(!this.taskTitle || this.taskTitle === '') { return }
-    this.tasks.push({ id: this.tasks.length + 1, title: this.taskTitle , deadline: {}, done: false, comments: [] })
-    this.taskTitle = ''
+    var self = this;
+    if(!this.task.title || this.task.title === '') { return }
+    this.task.$save({ project_id: this.projectid }, function() {
+      self.tasks = self.Task.query({ project_id: self.projectid })
+      self.task = new self.Task()
+      self.removeContent()
+    })
   }
+
   removeContent() {
     this.taskTitle = ''
   }

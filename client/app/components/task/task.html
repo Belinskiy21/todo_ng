@@ -11,6 +11,7 @@
       </form>
     </div>
   </div>
+
   <div class='row' ng-repeat= "task in vm.tasks ">
     <div  id="taskList" class='col-md-12'>
         <button class="btn btn-default btn-block">
@@ -29,19 +30,19 @@
         </button>
     </div>
   </div>
-
+<!--Add task-->
   <div class='row'>
     <div class='col-md-12'>
-      <div class="form-group" >
-        <input type="text" class="form-control" placeholder="Add task here..." ng-model="vm.taskTitle">
-      </div>
-      <button type="submit" class="btn btn-success" ng-click ="vm.addTask()" ng-show="vm.taskTitle">Create task</button>
-      <button type="button" class="btn btn-default" ng-click ="vm.removeContent()" ng-show="vm.taskTitle">Cancel</button>
-    </div>
+      <form name="addTask" class="form-group" ng-submit="vm.addTask()">
+        <input type="text" class="form-control" placeholder="Add task here..." ng-model="vm.task.title">
+      <button type="submit" class="btn btn-success btn-sm" ng-show="vm.task.title">Create task</button>
+      <button type="button" class="btn btn-default btn-sm" ng-click ="vm.removeContent()" ng-show="vm.task.title">Cancel</button>
+    </form>
+  </div>
   </div>
 
 
-
+<!--Modal window  -->
   <div  class="modal">
     <script type="text/ng-template" id="modal.html">
 
