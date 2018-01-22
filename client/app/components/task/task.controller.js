@@ -29,22 +29,29 @@ class TaskController {
   }
 
   deleteTask(task){
+    var self = this;
     if (confirm("sure to delete task?"))
-    this.tasks.splice(this.tasks.indexOf(task), 1 )
+    task.$delete({ project_id: this.projectid , id: task.id }, function(){
+        self.tasks = self.Task.query({ project_id: self.projectid })
+    })
   }
   editTask(task) {
     this.showField = true
-    this.tTitle = task.title
+    this.task.title = task.title
     this.helpTask = task
   }
   cancelEdit() {
     this.showField = false
+    this.removeContent()
   }
   Save() {
-    this.newTask = { "id": this.helpTask.id, "title": this.tTitle}
-    this.tasks.splice(this.tasks.indexOf(this.helpTask), 1)
-    this.tasks.push(this.newTask)
-    this.showField = false
+    var self = this;
+    if(!this.task.title || this.task.title === '') { return }
+    this.task.$update({ project_id: this.projectid, id: this.helpTask.id },function(){
+      self.tasks = self.Task.query({ project_id: self.projectid })
+      self.removeContent()
+      self.showField = false
+    })
   }
 
   Up(task) {

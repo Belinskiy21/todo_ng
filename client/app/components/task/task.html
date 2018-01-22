@@ -5,7 +5,7 @@
   <div id="taskEdit" class='row' ng-show="vm.showField">
     <div class='col-md-12'>
       <form name"editTask"  ng-submit="vm.Save()">
-        <input class="form-control task"  type="text" ng-model="vm.tTitle" required>
+        <input class="form-control task"  type="text" ng-model="vm.task.title" required>
         <button  type="submit" class="btn btn-success btn-sm pull-right">Save</button>
         <button type="button" class="btn btn-default btn-sm pull-right" ng-click = "vm.cancelEdit()">Cancel</button>
       </form>
@@ -14,7 +14,7 @@
 
   <div class='row' ng-repeat= "task in vm.tasks ">
     <div  id="taskList" class='col-md-12'>
-        <button class="btn btn-default btn-block">
+        <button class="btn btn-default btn-block" ng-hide="vm.showField">
             <input class="checkbox pull-left" type="checkbox" ng-model="task.done">
             <span class="title done-{{task.done}} pull-left">{{task.title}}</span>
           <span class="task-controls">
@@ -33,10 +33,10 @@
 <!--Add task-->
   <div class='row'>
     <div class='col-md-12'>
-      <form name="addTask" class="form-group" ng-submit="vm.addTask()">
+      <form name="addTask" class="form-group" ng-submit="vm.addTask()" ng-hide="vm.showField">
         <input type="text" class="form-control" placeholder="Add task here..." ng-model="vm.task.title">
-      <button type="submit" class="btn btn-success btn-sm" ng-show="vm.task.title">Create task</button>
-      <button type="button" class="btn btn-default btn-sm" ng-click ="vm.removeContent()" ng-show="vm.task.title">Cancel</button>
+      <button type="submit" class="btn btn-success btn-sm" ng-show="addTask.$dirty && vm.task.title != '' ">Create task</button>
+      <button type="button" class="btn btn-default btn-sm" ng-click ="vm.removeContent()" ng-show="addTask.$dirty && vm.task.title != ''">Cancel</button>
     </form>
   </div>
   </div>
