@@ -38,14 +38,17 @@
         </button>
         <!-- Tasks -->
           <task ng-if="project === model.current_project" ng-show="model.visible"
-tasks="model.projectTasks" projectid="model.project_id" opened="model.isOpen" deadline = "model.currentTask.deadline" on-open-datepicker="model.openDatepicker(status, task)"></task>
+tasks="model.projectTasks" projectid="model.project_id" opened="model.isOpen"  on-open-datepicker="model.openDatepicker(status, task)"></task>
       </div>
     </div>
     <!-- Date picker -->
     <span ng-if="project === model.current_project">
     <div class='col-md-3' ng-show="model.isOpen">
       <h4>Choose deadline:</h4>
-      <md-datepicker ng-model="model.date" md-placeholder="Enter date..."></md-datepicker></div>
+      <div class="alert alert-danger" ng-show='model.message'>
+        {{model.message}}
+      </div>
+      <md-datepicker ng-model="model.deadline" md-placeholder="Enter the date..."></md-datepicker></div>
     </span>
   </div>
   <div class="row">

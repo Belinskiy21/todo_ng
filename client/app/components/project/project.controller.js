@@ -1,10 +1,12 @@
 class ProjectController {
   constructor($http, $location, Project, Task) {
     'ngInject';
+    this.API_URL = 'http://localhost:3000';
+    this.$http = $http;
     this.$location = $location;
     this.Project = Project;
     this.Task = Task;
-    this.date = new Date()
+    this.deadline = new Date()
     this.projects = this.Project.query()
     this.project = new this.Project()
   }
@@ -59,15 +61,21 @@ class ProjectController {
   }
 
   openDatepicker(status, task) {
+    var self = this;
     this.isOpen = status
-    this.currentTask= task
-    if(this.date) {
-      this.currentTask.deadline = this.date
+    if(this.deadline && status === false ) {
+      task.deadline = this.deadline.toDateString()
+      this.$http.put(this.API_URL + `/api/v1/projects/${this.project_id}/tasks/${task.id}`,
+        { deadline: task.deadline } ).then(
+          (response) => {
+          self.projectTasks = self.Task.query({ project_id: self.project_id})
+          },
+          (response) => self.message = response.data.message
+        )
     }
     else {
-      this.currentTask.deadline = null
+      task.deadline = null
     }
-    console.log(this.currentTask.deadline)
   }
 }
 

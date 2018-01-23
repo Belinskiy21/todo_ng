@@ -42,6 +42,14 @@
     font-size: 12px;
     margin-top: 10px;
     color: gray;
+    outline: none;
+  }
+  .glyphicon.glyphicon-time.set {
+    margin-right: 5px;
+    font-size: 12px;
+    margin-top: 10px;
+    color: $deadlineColor;
+    outline: none;
   }
   .glyphicon.glyphicon-comment {
     margin-right: 10px;

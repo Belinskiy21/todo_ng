@@ -7,7 +7,6 @@ let taskComponent = {
     'tasks': '=',
     'projectid': '<',
     'opened': '=',
-    'deadline': '=',
     onOpenDatepicker : '&'
   },
   template,
