@@ -12,7 +12,7 @@
     </div>
   </div>
 
-  <div class='row' ng-repeat= "task in vm.tasks ">
+  <div class='row' ng-repeat= "task in vm.tasks | orderBy : 'position'">
     <div  id="taskList" class='col-md-12'>
         <button class="btn btn-default btn-block" ng-hide="vm.showField">
             <input class="checkbox pull-left" type="checkbox" ng-model="task.done">
@@ -24,8 +24,8 @@
             <i class="pull-right glyphicon glyphicon-time" ng-click="vm.onOpenDatepicker({ status: vm.open, task: task})" ng-hide="vm.opened"></i>
             <i class="pull-right glyphicon glyphicon-time set" ng-click="vm.onOpenDatepicker({ status: vm.close, task: task})" ng-show="vm.opened"></i>
             <i class="pull-right glyphicon glyphicon-comment" ng-click="vm.openComments(task)"></i>
-            <i class="pull-right glyphicon glyphicon-arrow-up" ng-click="vm.Up(task)"></i>
-            <i class="pull-right glyphicon glyphicon-arrow-down" ng-click="vm.Down(task)"></i>
+            <i class="pull-right glyphicon glyphicon-arrow-up" ng-click="vm.Move(task, 'move_higher')"></i>
+            <i class="pull-right glyphicon glyphicon-arrow-down" ng-click="vm.Move(task, 'move_lower')"></i>
           </span>
         </button>
     </div>

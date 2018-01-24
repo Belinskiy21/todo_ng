@@ -70,7 +70,7 @@ class ProjectController {
           (response) => {
           self.projectTasks = self.Task.query({ project_id: self.project_id})
           },
-          (response) => self.message = response.data.message
+          (response) => { self.message = response.data.message }
         )
     }
     else {

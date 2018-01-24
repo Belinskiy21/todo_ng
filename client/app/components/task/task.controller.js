@@ -15,9 +15,9 @@ class TaskController {
   }
 
   addTask() {
-    var self = this;
+    let self = this;
     if(!this.task.title || this.task.title === '') { return }
-    this.task.$save({ project_id: this.projectid }, function() {
+    this.task.$load({ project_id: this.projectid }, function() {
       self.tasks = self.Task.query({ project_id: self.projectid })
       self.task = new self.Task()
       self.removeContent()
@@ -29,7 +29,7 @@ class TaskController {
   }
 
   deleteTask(task){
-    var self = this;
+    let self = this;
     if (confirm("sure to delete task?"))
     task.$delete({ project_id: this.projectid , id: task.id }, function(){
         self.tasks = self.Task.query({ project_id: self.projectid })
@@ -45,7 +45,7 @@ class TaskController {
     this.removeContent()
   }
   Save() {
-    var self = this;
+    let self = this;
     if(!this.task.title || this.task.title === '') { return }
     this.task.$update({ project_id: this.projectid, id: this.helpTask.id },function(){
       self.tasks = self.Task.query({ project_id: self.projectid })
@@ -54,34 +54,18 @@ class TaskController {
     })
   }
 
-  Up(task) {
-    this.oldIndex = this.tasks.indexOf(task)
-    if (this.oldIndex > 0){
-      this.newIndex = this.oldIndex - 1
-      this.tasksClone = this.tasks.slice()
-      this.removedTask = this.tasksClone.splice(this.oldIndex, 1)
-      this.tasksClone.splice(this.newIndex, 0, this.removedTask[0])
-      this.tasks = this.tasksClone
-      return this.tasks
+  Move(task, direction) {
+    let self = this;
+    let params = { move : direction }
+    this.$http.put(this.API_URL + `/api/v1/projects/${this.projectid}/tasks/${task.id}`,
+      params ).then(
+        (response) => { this.tasks = self.Task.query({ project_id: self.projectid}) },
+        (response)  => { console.log(response.data) }
+      )
     }
-    return this.tasks
-  }
-
-  Down(task) {
-    this.oldIndex = this.tasks.indexOf(task)
-    if (this.oldIndex < this.tasks.length){
-      this.newIndex = this.oldIndex + 1
-      this.tasksClone = this.tasks.slice()
-      this.removedTask = this.tasksClone.splice(this.oldIndex, 1)
-      this.tasksClone.splice(this.newIndex, 0, this.removedTask[0])
-      this.tasks = this.tasksClone
-      return this.tasks
-    }
-    return this.tasks
-  }
 
   openComments(task) {
-    var self = this;
+    let self = this;
     this.$http.get(this.API_URL + `/api/v1/projects/${this.projectid}/tasks/${task.id}/comments`).then(
       (response) => {
         self.comments = response.data
