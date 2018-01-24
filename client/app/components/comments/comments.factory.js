@@ -1,6 +1,8 @@
 let CommentsFactory = function () {
   const comm =  {
-    comments: []
+    comments: [],
+    projectid: 0,
+    taskid: 0
   };
 
   return { comm };

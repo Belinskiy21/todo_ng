@@ -4,7 +4,9 @@ import './comments.scss';
 
 let commentsComponent = {
   bindings: {
-    'comments': '='
+    'comments': '=',
+    'projectid': '=',
+    'taskid': '='
   },
   template,
   controller

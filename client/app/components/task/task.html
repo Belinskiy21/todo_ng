@@ -15,7 +15,7 @@
   <div class='row' ng-repeat= "task in vm.tasks | orderBy : 'position'">
     <div  id="taskList" class='col-md-12'>
         <button class="btn btn-default btn-block" ng-hide="vm.showField">
-            <input class="checkbox pull-left" type="checkbox" ng-model="task.done">
+            <input class="checkbox pull-left" type="checkbox" ng-change="vm.changeStatus(task)" ng-model="task.done">
             <span class="title done-{{task.done}} pull-left">{{task.title}}</span>
           <span class="task-controls">
             <span class="date pull-left">{{task.deadline}}</span>
@@ -52,7 +52,7 @@
       </div>
 
       <div class="modal-body">
-        <comments comments="comments"></comments>
+        <comments comments="comments" projectid="projectid" taskid="taskid"></comments>
         <br/>
       </div>
 

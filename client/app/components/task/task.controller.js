@@ -69,27 +69,44 @@ class TaskController {
     this.$http.get(this.API_URL + `/api/v1/projects/${this.projectid}/tasks/${task.id}/comments`).then(
       (response) => {
         self.comments = response.data
-        self.openModal()
+        self.openModal(task)
       }
     )
   }
 
-  openModal() {
+  openModal(task) {
     this.Comments.comments = this.comments
+    this.Comments.projectid = this.projectid
+    this.Comments.taskid = task.id
     this.$uibModal.open({
       templateUrl: 'modal.html',
-      controller: ['$uibModalInstance','$scope', 'Comments', Controller]
+      controller: ['$uibModalInstance','$scope', 'Comments', 'CommService', Controller]
     })
-    function Controller(uibModalInstance, scope, Comments) {
+    function Controller(uibModalInstance, scope, Comments, CommService) {
       scope.close = () => {
         uibModalInstance.close();
       }
       scope.comments = Comments.comments;
+      scope.projectid = Comments.projectid;
+      scope.taskid = Comments.taskid;
+      scope.comment = new CommService();
 
       scope.deleteComment = (comment) => {
-        scope.comments.splice(scope.comments.indexOf(comment), 1);
+        var self = scope;
+        scope.comment.$delete({ project_id: scope.projectid , task_id: scope.taskid, id: comment.id }, function() {
+          self.comments = self.CommService.query({ project_id: self.projectid, task_id: self.taskid })
+        })
       }
     }
+  }
+
+  changeStatus(task) {
+    let self = this;
+    this.$http.put(this.API_URL + `/api/v1/projects/${this.projectid}/tasks/${task.id}`,
+      task ).then(
+        (response) => { this.tasks = self.Task.query({ project_id: self.projectid}) },
+        (response)  => { console.log(response.data) }
+      )
   }
 
 }

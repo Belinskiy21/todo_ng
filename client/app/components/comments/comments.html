@@ -1,6 +1,6 @@
 <div class="comments">
-  <form class="form-group" ng-submit="$ctrl.saveComment(comment)">
-    <textarea class="form-control" rows="3" id="comment" placeholder="Enter your comment..." ng-model="$ctrl.comment" required>
+  <form  name="saveComment" class="form-group" ng-submit="$ctrl.saveComment(comment)">
+    <textarea class="form-control" rows="3" id="comment" placeholder="Enter your comment..." ng-model="$ctrl.comment.text" required>
     </textarea>
 
     <span class="glyphicon glyphicon-paperclip pull-right" ngf-select="upload($file, comment)"></span>
