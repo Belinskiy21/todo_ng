@@ -94,7 +94,7 @@ class TaskController {
       scope.deleteComment = (comment) => {
         var self = scope;
         scope.comment.$delete({ project_id: scope.projectid , task_id: scope.taskid, id: comment.id }, function() {
-          self.comments = self.CommService.query({ project_id: self.projectid, task_id: self.taskid })
+          self.comments = CommService.query({ project_id: self.projectid, task_id: self.taskid })
         })
       }
     }
