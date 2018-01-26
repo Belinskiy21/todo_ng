@@ -62,6 +62,7 @@
             <ul style="list-style-type: none;" ng-repeat="comment in comments">
               <li><small class="pull-left">{{comment.created_at.substring(0, 10)}}</small><i ng-if="comment.created_at" class="glyphicon glyphicon-trash pull-left" style=" margin-left: 10px; font-size: 15px; color: gray; cursor: pointer; outline: none;" ng-click="deleteComment(comment)"></i><br>
                 <small class="pull-left"><h5>{{comment.text}}</h5></small><br>
+                <br>
               </li>
             </ul>
           </div>
