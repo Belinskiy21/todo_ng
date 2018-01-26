@@ -1,11 +1,25 @@
 <div class="comments">
   <form  name="saveComment" class="form-group" ng-submit="$ctrl.saveComment(comment)">
+    <div class="alert alert-danger" ng-show="$ctrl.comment.file && !$ctrl.comment.text">
+      {{$ctrl.message_file}}
+    </div>
     <textarea class="form-control" rows="3" id="comment" placeholder="Enter your comment..." ng-model="$ctrl.comment.text" required>
     </textarea>
-
-    <span class="glyphicon glyphicon-paperclip pull-right" ngf-select="upload($file, comment)"></span>
+    <div class="file-uploader-icon">
+      <label for="uplodImage">
+        <i class="fa glyphicon glyphicon-paperclip" aria-hidden="true"></i>
+      </label>
+      <input id="uplodImage" ngf-select ng-model="$ctrl.comment.file" name="file" type="file" ngf-max-size="10MB" accept="image/jpeg,image/jpg,image/png" class="ng-hide">
+    </div>
 
     <button type="button" class="btn btn-default pull-right" ng-click ="$ctrl.cancelComment()">Cancel</button>
-    <button type="submit" class="btn btn-primary pull-right">Save</button>
+    <button type="submit" class="btn btn-primary pull-right"><span ng-show="$ctrl.comment.file">Save File</span><span ng-hide="$ctrl.comment.file">Save</span></button>
+    <!-- preview strat -->
+    <br />
+      <div ng-show="$ctrl.comment.file" class="image-preview">
+        <div class="pull-left">Image preview:&nbsp;&nbsp;</div>
+        <img ngf-thumbnail="$ctrl.comment.file" class="thumb img-rounded" width="80" height="50">
+    </div>
+    <!-- preview end -->
   </form>
 </div>

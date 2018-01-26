@@ -47,7 +47,7 @@
     <script type="text/ng-template" id="modal.html">
 
       <div class="modal-header">
-        <i class="pull-right glyphicon glyphicon-remove" ng-click="close()"></i>
+        <i class="pull-right glyphicon glyphicon-remove" style="outline: none;" ng-click="close()"></i>
         <h3 class="modal-title">Add comment</h3>
       </div>
 
@@ -60,10 +60,8 @@
         <div class="row">
           <div class="col-md-8">
             <ul style="list-style-type: none;" ng-repeat="comment in comments">
-              <li><small class="pull-left">{{comment.created_at.substring(0, 10)}}</small><i ng-if="comment.created_at" class="glyphicon glyphicon-trash pull-left" style=" margin-left: 10px; font-size: 15px; color: gray; cursor: pointer;" ng-click="deleteComment(comment)"></i><br>
+              <li><small class="pull-left">{{comment.created_at.substring(0, 10)}}</small><i ng-if="comment.created_at" class="glyphicon glyphicon-trash pull-left" style=" margin-left: 10px; font-size: 15px; color: gray; cursor: pointer; outline: none;" ng-click="deleteComment(comment)"></i><br>
                 <small class="pull-left"><h5>{{comment.text}}</h5></small><br>
-                <!-- <span class="pull-left">{{comment.file}}</span><br> -->
-                <span ngf-thumbnail="comment.file"  ng-if="comment.file"></span><br>
               </li>
             </ul>
           </div>

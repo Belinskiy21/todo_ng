@@ -1,14 +1,24 @@
 .comments {
   .btn {
+    position: relative;
+    right: -30px;
     margin-right: 10px;
-    margin-top: 10px;
+    margin-top: 20px;
     outline: none;
   }
-  .glyphicon.glyphicon-paperclip {
-    margin-top: -25px;
-    margin-right: 10px;
-    font-size: 20px;
-    cursor: pointer;
-    outline: none;
+
+  .file-uploader-icon {
+    position: relative;
+    float: right;
+    right: 10px;
+    bottom: 30px;
+    .fa {
+      font-size: 20px;
+      color: gray;
+      cursor: pointer;
+    }
+  }
+  .alert.alert-danger {
+    margin-bottom: 5px;
   }
 }

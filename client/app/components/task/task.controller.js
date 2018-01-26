@@ -59,7 +59,7 @@ class TaskController {
     let params = { move : direction }
     this.$http.put(this.API_URL + `/api/v1/projects/${this.projectid}/tasks/${task.id}`,
       params ).then(
-        (response) => { this.tasks = self.Task.query({ project_id: self.projectid}) },
+        (response) => { self.tasks = self.Task.query({ project_id: self.projectid}) },
         (response)  => { console.log(response.data) }
       )
     }
@@ -68,8 +68,8 @@ class TaskController {
     let self = this;
     this.$http.get(this.API_URL + `/api/v1/projects/${this.projectid}/tasks/${task.id}/comments`).then(
       (response) => {
-        self.comments = response.data
-        self.openModal(task)
+        this.comments = response.data
+        this.openModal(task)
       }
     )
   }
@@ -104,7 +104,7 @@ class TaskController {
     let self = this;
     this.$http.put(this.API_URL + `/api/v1/projects/${this.projectid}/tasks/${task.id}`,
       task ).then(
-        (response) => { this.tasks = self.Task.query({ project_id: self.projectid}) },
+        (response) => { self.tasks = self.Task.query({ project_id: self.projectid}) },
         (response)  => { console.log(response.data) }
       )
   }
