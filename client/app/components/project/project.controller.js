@@ -1,7 +1,7 @@
 class ProjectController {
   constructor($http, $location, Project, Task) {
     'ngInject';
-    this.API_URL = 'http://localhost:3000';
+    this.API_URL = 'http://rocky-cove-79647.herokuapp.com';
     this.$http = $http;
     this.$location = $location;
     this.Project = Project;
@@ -10,6 +10,7 @@ class ProjectController {
     this.projects = this.Project.query()
     this.project = new this.Project()
   }
+
   addProject() {
     var self = this;
     if(!this.project.title || this.project.title === '') { return }
@@ -19,9 +20,11 @@ class ProjectController {
       self.removeContent()
     })
   }
+
   removeContent() {
     this.project.title = ''
   }
+
   deleteProject(project){
     var self = this;
     if (confirm("sure to delete project?"))
@@ -29,12 +32,14 @@ class ProjectController {
         self.projects = self.Project.query()
       })
   }
+
   editProject(project) {
     this.showEdit = true
     this.project.title = project.title
     this.current_id = project.id
     // this.projectTasks = project.tasks
   }
+
   Save() {
     var self = this;
     if(!this.project.title || this.project.title === '') { return }
@@ -44,6 +49,7 @@ class ProjectController {
       self.showEdit = false
     })
   }
+
   cancelEdit() {
     this.showEdit = false
     this.removeContent()

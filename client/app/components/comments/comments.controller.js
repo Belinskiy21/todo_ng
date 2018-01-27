@@ -4,7 +4,7 @@ class CommentsController {
     this.$http = $http;
     this.Upload = Upload;
     this.CommService = CommService;
-    this.API_URL = 'http://localhost:3000';
+    this.API_URL = 'http://rocky-cove-79647.herokuapp.com';
     this.name = 'comments';
     this.date = new Date();
     this.comment = {};

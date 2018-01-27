@@ -4,8 +4,9 @@ class SignupController {
 
     this.$http = $http;
     this.$location = $location;
-    this.API_URL = 'http://localhost:3000';
+    this.API_URL = 'http://rocky-cove-79647.herokuapp.com';
   }
+
   signup() {
     var self = this;
 

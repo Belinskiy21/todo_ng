@@ -6,7 +6,7 @@ class TaskController {
     this.$http = $http;
     this.Comments = Comments;
     this.Task = Task;
-    this.API_URL = 'http://localhost:3000';
+    this.API_URL = 'http://rocky-cove-79647.herokuapp.com';
     this.task = new this.Task()
     this.myDate = new Date();
     this.open = true;
@@ -35,15 +35,18 @@ class TaskController {
         self.tasks = self.Task.query({ project_id: self.projectid })
     })
   }
+
   editTask(task) {
     this.showField = true
     this.task.title = task.title
     this.helpTask = task
   }
+
   cancelEdit() {
     this.showField = false
     this.removeContent()
   }
+
   Save() {
     let self = this;
     if(!this.task.title || this.task.title === '') { return }
