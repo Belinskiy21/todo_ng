@@ -17,10 +17,15 @@ class CommentsController {
     let self = this;
     if (this.comment.file) {
       this.Upload.upload({
-        data: { file: this.comment.file, text: this.comment.text },
+        file: this.comment.file,
+        data: { text: this.comment.text },
+        method: 'POST',
         url: this.API_URL + `/api/v1/projects/${this.projectid}/tasks/${this.taskid}/comments`
       }).then(
-        result => { console.Log('success') }
+        result => {
+          this.cancelComment()
+          this.comments = this.CommService.query({ project_id: this.projectid, task_id: this.taskid })
+         }
       )
     }
     else {
