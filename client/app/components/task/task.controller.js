@@ -6,7 +6,7 @@ class TaskController {
     this.$http = $http;
     this.Comments = Comments;
     this.Task = Task;
-    this.API_URL = 'http://rocky-cove-79647.herokuapp.com';
+    this.API_URL = 'https://rocky-cove-79647.herokuapp.com';
     this.task = new this.Task()
     this.myDate = new Date();
     this.open = true;

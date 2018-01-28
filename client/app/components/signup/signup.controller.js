@@ -4,7 +4,7 @@ class SignupController {
 
     this.$http = $http;
     this.$location = $location;
-    this.API_URL = 'http://rocky-cove-79647.herokuapp.com';
+    this.API_URL = 'https://rocky-cove-79647.herokuapp.com';
   }
 
   signup() {
