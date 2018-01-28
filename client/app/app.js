@@ -8,7 +8,7 @@ import ngMaterial from 'angular-material';
 import ngFileUpload from 'ng-file-upload';
 import ngResource from 'angular-resource';
 import 'angular-material/angular-material.css';
-// import 'normalize.css';
+
 
 angular.module('app', [
     uiRouter,
