@@ -17,7 +17,7 @@ class LoginController {
         self.getProjects()
       },
       (response) => {
-        self.message = response.data.message
+        this.message = response.data.message
       }
     )
   }
