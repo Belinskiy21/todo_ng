@@ -9,7 +9,7 @@ class LoginController {
   login() {
     var self = this;
     this.promise = this.$http.post(
-      this.API_URL + '/auth/login',
+      this.API_URL + '/api/v1/auth/login',
       { email: this.email, password: this.password }
     ).then(
       (response) => {

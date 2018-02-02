@@ -12,7 +12,7 @@ class SignupController {
 
     if (this.password === this.confirmPassword) {
       this.promise = this.$http.post(
-        this.API_URL + '/signup',
+        this.API_URL + '/api/v1/signup',
         { email: this.email, password: this.password, password_confirmation: this.confirmPassword }
       ).then(
         (response) => {
