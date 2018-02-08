@@ -74,12 +74,7 @@ class ProjectController {
     if(this.deadline && status === false ) {
       task.deadline = this.deadline.toDateString()
       this.$http.put(this.$rootScope.API_URL + `/api/v1/projects/${this.project_id}/tasks/${task.id}`,
-        { deadline: task.deadline } ).then(
-          () => {
-          self.projectTasks = self.Task.query({ project_id: self.project_id})
-          },
-          (response) => { self.message = response.data.message }
-        )
+        { deadline: task.deadline } )
     }
     else {
       task.deadline = null

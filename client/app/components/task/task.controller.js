@@ -64,10 +64,54 @@ class TaskController {
     let params = { move : direction }
     this.$http.put(this.API_URL + `/api/v1/projects/${this.projectid}/tasks/${task.id}`,
       params ).then(
-        (response) => { self.tasks = self.Task.query({ project_id: self.projectid}) },
-        (response)  => { console.log(response.data) }
+        () => {
+          this.up_task = this.tasks[this.tasks.indexOf(task) - 1]
+          this.down_task = this.tasks[this.tasks.indexOf(task) + 1]
+          this.helper = 0
+          if(task.position > 1 && direction == 'move_higher') {
+            this.helper = task.position
+            task.position = this.up_task.position
+            this.up_task.position = this.helper
+            this.UpIndex(task)
+          }
+          else if (task.position < this.tasks.length && direction == 'move_lower') {
+            this.helper = task.position
+            task.position = this.down_task.position
+            this.down_task.position = this.helper
+            this.DownIndex(task)
+          }
+          else {
+            return this.tasks
+          }
+        }
       )
     }
+
+  UpIndex(task) {
+    this.oldIndex = this.tasks.indexOf(task)
+    if (this.oldIndex > 0){
+      this.newIndex = this.oldIndex - 1
+      this.tasksClone = this.tasks.slice()
+      this.removedTask = this.tasksClone.splice(this.oldIndex, 1)
+      this.tasksClone.splice(this.newIndex, 0, this.removedTask[0])
+      this.tasks = this.tasksClone
+      return this.tasks
+    }
+    return this.tasks
+  }
+
+  DownIndex(task) {
+    this.oldIndex = this.tasks.indexOf(task)
+    if (this.oldIndex < this.tasks.length){
+      this.newIndex = this.oldIndex + 1
+      this.tasksClone = this.tasks.slice()
+      this.removedTask = this.tasksClone.splice(this.oldIndex, 1)
+      this.tasksClone.splice(this.newIndex, 0, this.removedTask[0])
+      this.tasks = this.tasksClone
+      return this.tasks
+    }
+    return this.tasks
+  }
 
   openComments(task) {
     let self = this;
