@@ -32,15 +32,16 @@
     margin-bottom: 10px;
     background-color: $navBgColor;
   }
-  .btn.btn-default {
+  .btn.btn-default.btn-sm {
     margin-top: 5px;
     margin-bottom: 10px;
-
+    padding-top: 10px;
   }
-  .btn.btn-primary {
+  .btn.btn-primary.btn-sm {
     margin-top: 5px;
     margin-bottom: 12px;
     background-color: $primaryColor;
+    padding-top: 10px;
   }
   .form-control.project{
     background-color:$navBgColor;

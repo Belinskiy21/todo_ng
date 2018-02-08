@@ -1,12 +1,12 @@
 class TaskController {
-  constructor($uibModal, $http, Comments, Task) {
+  constructor($uibModal, $http, $rootScope, Comments, Task) {
     'ngInject';
 
     this.$uibModal = $uibModal;
     this.$http = $http;
     this.Comments = Comments;
     this.Task = Task;
-    this.API_URL = 'https://rocky-cove-79647.herokuapp.com';
+    this.API_URL = $rootScope.API_URL;
     this.task = new this.Task()
     this.myDate = new Date();
     this.open = true;
@@ -17,8 +17,9 @@ class TaskController {
   addTask() {
     let self = this;
     if(!this.task.title || this.task.title === '') { return }
-    this.task.$load({ project_id: this.projectid }, function() {
-      self.tasks = self.Task.query({ project_id: self.projectid })
+    this.task.$load({ project_id: this.projectid }, function(response) {
+      console.log(response)
+      self.tasks = [...self.tasks, response]
       self.task = new self.Task()
       self.removeContent()
     })
@@ -31,8 +32,9 @@ class TaskController {
   deleteTask(task){
     let self = this;
     if (confirm("sure to delete task?"))
-    task.$delete({ project_id: this.projectid , id: task.id }, function(){
-        self.tasks = self.Task.query({ project_id: self.projectid })
+    task.$delete({ project_id: this.projectid , id: task.id }, function(response){
+        console.log(response)
+        self.tasks.splice(self.tasks.indexOf(task), 1 )
     })
   }
 
@@ -107,9 +109,23 @@ class TaskController {
     let self = this;
     this.$http.put(this.API_URL + `/api/v1/projects/${this.projectid}/tasks/${task.id}`,
       task ).then(
-        (response) => { self.tasks = self.Task.query({ project_id: self.projectid}) },
-        (response)  => { console.log(response.data) }
+        setTimeout(() => {
+          self.checkComplete()
+          },
+        500
       )
+    )
+  }
+
+  checkComplete(){
+    let self = this;
+    this.Task.query({ project_id: this.projectid }, function(data) {
+      console.log(data)
+      if((data.length > 0) && !(data.map(task => task.done).includes(false))){
+          self.onShowMessage({message: 'Well Done! You’re successfully completed all tasks' })
+        }
+      }
+    )
   }
 
 }

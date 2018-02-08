@@ -1,10 +1,10 @@
 class CommentsController {
-  constructor(Upload, CommService, $http) {
+  constructor(Upload, CommService, $http, $rootScope) {
     'ngInject';
     this.$http = $http;
     this.Upload = Upload;
     this.CommService = CommService;
-    this.API_URL = 'https://rocky-cove-79647.herokuapp.com';
+    this.API_URL = $rootScope.API_URL;
     this.name = 'comments';
     this.date = new Date();
     this.comment = {};
@@ -29,8 +29,8 @@ class CommentsController {
       )
     }
     else {
-      this.comment.$load({ project_id: this.projectid, task_id: this.taskid }, function(){
-        self.comments = self.CommService.query({ project_id: self.projectid, task_id: self.taskid })
+      this.comment.$load({ project_id: this.projectid, task_id: this.taskid }, function(response){
+        self.comments = [...self.comments, response]
         self.comment = new self.CommService()
         self.cancelComment()
       })

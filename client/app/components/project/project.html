@@ -10,6 +10,10 @@
   <div class='row'>
     <div class='col-md-3'></div>
     <div class='col-md-6'>
+      <!-- Message -->
+      <div class="alert alert-danger" ng-show='model.message'>
+        {{model.message}}
+      </div>
       <!--Edit project form-->
         <form name"editProject" ng-show="model.showEdit" ng-submit="model.Save()" >
           <input class="form-control project"  type="text" ng-model="model.project.title" required>
@@ -38,7 +42,7 @@
         </button>
         <!-- Tasks -->
           <task ng-if="project === model.current_project" ng-show="model.visible"
-tasks="model.projectTasks" projectid="model.project_id"  opened="model.isOpen"  on-open-datepicker="model.openDatepicker(status, task)"></task>
+tasks="model.projectTasks" projectid="model.project_id"  opened="model.isOpen"  on-open-datepicker="model.openDatepicker(status, task)" on-show-message="model.showMessage(message)"></task>
       </div>
     </div>
     <!-- Date picker -->

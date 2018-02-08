@@ -9,9 +9,9 @@ let commentsModule = angular.module('comments', [
 
 .component('comments', commentsComponent)
 .factory('Comments', CommentsFactory)
-.factory('CommService', function($resource) {
+.factory('CommService', function($resource, Comments) {
   'ngInject';
-  let API_URL = 'https://rocky-cove-79647.herokuapp.com';
+  let API_URL = Comments.comm.url;
   return $resource(
     API_URL + '/api/v1/projects/:project_id/tasks/:task_id/comments/:id', { project_id: '@project_id', task_id: '@task_id', id: '@id' }, {
       update: {

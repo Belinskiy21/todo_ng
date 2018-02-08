@@ -7,7 +7,8 @@ let taskComponent = {
     'tasks': '=',
     'projectid': '<',
     'opened': '=',
-    onOpenDatepicker : '&'
+    onOpenDatepicker : '&',
+    onShowMessage: '&'
   },
   template,
   controllerAs: 'vm',

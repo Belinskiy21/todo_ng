@@ -23,9 +23,9 @@ let projectModule = angular.module('project', [
       component: 'project'
     });
 })
-.factory('Project', function($resource) {
+.factory('Project', function($resource, Comments) {
   'ngInject';
-  let API_URL = 'https://rocky-cove-79647.herokuapp.com';
+  let API_URL = Comments.comm.url;
   return $resource(
     API_URL + '/api/v1/projects/:id', { id: '@id' }, {
       update: {

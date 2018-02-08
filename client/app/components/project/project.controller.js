@@ -1,7 +1,9 @@
 class ProjectController {
-  constructor($http, $location, Project, Task) {
+  constructor($http, $location, $rootScope, Project, Task, $timeout) {
     'ngInject';
-    this.API_URL = 'https://rocky-cove-79647.herokuapp.com';
+    this.$timeout = $timeout;
+    this.$rootScope = $rootScope;
+    this.$rootScope.API_URL = 'https://rocky-cove-79647.herokuapp.com';
     this.$http = $http;
     this.$location = $location;
     this.Project = Project;
@@ -14,8 +16,8 @@ class ProjectController {
   addProject() {
     var self = this;
     if(!this.project.title || this.project.title === '') { return }
-    this.project.$save(function(){
-      self.projects = self.Project.query()
+    this.project.$save(function(response){
+      self.projects = [...self.projects, response]
       self.project = new self.Project()
       self.removeContent()
     })
@@ -71,9 +73,9 @@ class ProjectController {
     this.isOpen = status
     if(this.deadline && status === false ) {
       task.deadline = this.deadline.toDateString()
-      this.$http.put(this.API_URL + `/api/v1/projects/${this.project_id}/tasks/${task.id}`,
+      this.$http.put(this.$rootScope.API_URL + `/api/v1/projects/${this.project_id}/tasks/${task.id}`,
         { deadline: task.deadline } ).then(
-          (response) => {
+          () => {
           self.projectTasks = self.Task.query({ project_id: self.project_id})
           },
           (response) => { self.message = response.data.message }
@@ -82,6 +84,20 @@ class ProjectController {
     else {
       task.deadline = null
     }
+  }
+
+  showMessage(message){
+    this.message = message
+    this.hideMessage()
+  }
+
+  hideMessage() {
+    let self = this;
+      this.$timeout(() => {
+        self.message = null;
+      },
+      5000
+    )
   }
 }
 

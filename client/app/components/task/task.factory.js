@@ -1,6 +1,6 @@
-let TaskFactory = function ($resource) {
+let TaskFactory = function ($resource, Comments) {
   'ngInject';
-  let API_URL = 'https://rocky-cove-79647.herokuapp.com';
+  let API_URL = Comments.comm.url;
   return $resource(
     API_URL + '/api/v1/projects/:project_id/tasks/:id', { project_id: '@project_id', id: '@id' }, {
       update: {
