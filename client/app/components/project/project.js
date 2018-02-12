@@ -23,9 +23,9 @@ let projectModule = angular.module('project', [
       component: 'project'
     });
 })
-.factory('Project', function($resource, Comments) {
+.factory('Project', function($resource, URL) {
   'ngInject';
-  let API_URL = Comments.comm.url;
+  let API_URL = URL;
   return $resource(
     API_URL + '/api/v1/projects/:id', { id: '@id' }, {
       update: {

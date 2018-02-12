@@ -1,10 +1,11 @@
 class CommentsController {
-  constructor(Upload, CommService, $http, $rootScope) {
+  constructor(Upload, CommService, $http, URL) {
     'ngInject';
     this.$http = $http;
     this.Upload = Upload;
+    this.URL = URL;
     this.CommService = CommService;
-    this.API_URL = $rootScope.API_URL;
+    this.API_URL = this.URL;
     this.name = 'comments';
     this.date = new Date();
     this.comment = {};

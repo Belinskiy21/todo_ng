@@ -1,9 +1,10 @@
 class LoginController {
-  constructor($http, $location, $rootScope) {
+  constructor($http, $location, URL) {
     'ngInject';
     this.$http = $http;
     this.$location = $location;
-    this.API_URL = 'https://rocky-cove-79647.herokuapp.com';
+    this.URL = URL;
+    this.API_URL = this.URL;
   }
 
   login() {

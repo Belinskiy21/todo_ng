@@ -46,5 +46,6 @@ angular.module('app', [
     // #how-to-configure-your-server-to-work-with-html5mode
     $locationProvider.html5Mode(true).hashPrefix('!');
   })
+  .constant( 'URL', 'https://rocky-cove-79647.herokuapp.com')
 
   .component('app', AppComponent);

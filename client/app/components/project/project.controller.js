@@ -1,9 +1,9 @@
 class ProjectController {
-  constructor($http, $location, $rootScope, Project, Task, $timeout) {
+  constructor($http, $location, URL, Project, Task, $timeout) {
     'ngInject';
     this.$timeout = $timeout;
-    this.$rootScope = $rootScope;
-    this.$rootScope.API_URL = 'https://rocky-cove-79647.herokuapp.com';
+    this.URL = URL;
+    this.API_URL = this.URL;
     this.$http = $http;
     this.$location = $location;
     this.Project = Project;
@@ -73,7 +73,7 @@ class ProjectController {
     this.isOpen = status
     if(this.deadline && status === false ) {
       task.deadline = this.deadline.toDateString()
-      this.$http.put(this.$rootScope.API_URL + `/api/v1/projects/${this.project_id}/tasks/${task.id}`,
+      this.$http.put(this.API_URL + `/api/v1/projects/${this.project_id}/tasks/${task.id}`,
         { deadline: task.deadline } )
     }
     else {
