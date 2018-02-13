@@ -1,10 +1,9 @@
 class LoginController {
-  constructor($http, $location, URL) {
+  constructor($http, $location, API_URL) {
     'ngInject';
     this.$http = $http;
     this.$location = $location;
-    this.URL = URL;
-    this.API_URL = this.URL;
+    this.API_URL = API_URL;
   }
 
   login() {

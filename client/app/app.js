@@ -21,7 +21,6 @@ angular.module('app', [
   ])
   .factory('authInterceptor', function($location, $q) {
     'ngInject';
-
     return {
       request: function(config) {
         config.headers = config.headers || {};
@@ -37,7 +36,6 @@ angular.module('app', [
         return $q.reject(response);
       }
     }
-
   })
   .config(($locationProvider,$httpProvider) => {
     "ngInject";
@@ -46,6 +44,5 @@ angular.module('app', [
     // #how-to-configure-your-server-to-work-with-html5mode
     $locationProvider.html5Mode(true).hashPrefix('!');
   })
-  .constant( 'URL', 'https://rocky-cove-79647.herokuapp.com')
-
+  .constant( 'API_URL', 'https://rocky-cove-79647.herokuapp.com')
   .component('app', AppComponent);

@@ -7,18 +7,14 @@ let loginModule = angular.module('login', [
 ])
 .config(($stateProvider, $urlRouterProvider) => {
   "ngInject";
-
   $urlRouterProvider.otherwise('/login');
-
   $stateProvider
     .state('login', {
       url: '/login',
       component: 'login'
     });
 })
-
 .component('login', loginComponent)
-
 .name;
 
 export default loginModule;

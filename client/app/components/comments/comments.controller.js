@@ -1,17 +1,15 @@
 class CommentsController {
-  constructor(Upload, CommService, $http, URL) {
+  constructor(Upload, CommService, $http, API_URL) {
     'ngInject';
     this.$http = $http;
     this.Upload = Upload;
-    this.URL = URL;
+    this.API_URL = API_URL;
     this.CommService = CommService;
-    this.API_URL = this.URL;
     this.name = 'comments';
     this.date = new Date();
     this.comment = {};
     this.comment = new this.CommService()
     this.message_file = 'Comment is require, before save file!'
-
   }
 
   saveComment(comment){

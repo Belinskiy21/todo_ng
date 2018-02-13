@@ -1,13 +1,12 @@
 class TaskController {
-  constructor($uibModal, $http, Comments, Task, URL) {
+  constructor($uibModal, $http, Comments, Task, API_URL) {
     'ngInject';
 
     this.$uibModal = $uibModal;
     this.$http = $http;
     this.Comments = Comments;
     this.Task = Task;
-    this.URL = URL;
-    this.API_URL = this.URL;
+    this.API_URL = API_URL;
     this.task = new this.Task()
     this.myDate = new Date();
     this.open = true;

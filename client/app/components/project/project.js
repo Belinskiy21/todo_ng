@@ -14,18 +14,15 @@ let projectModule = angular.module('project', [
 ])
 .config(($stateProvider, $urlRouterProvider) => {
   "ngInject";
-
   $urlRouterProvider.otherwise('/login');
-
   $stateProvider
     .state('projects', {
       url: '/projects',
       component: 'project'
     });
 })
-.factory('Project', function($resource, URL) {
+.factory('Project', function($resource, API_URL) {
   'ngInject';
-  let API_URL = URL;
   return $resource(
     API_URL + '/api/v1/projects/:id', { id: '@id' }, {
       update: {
@@ -35,7 +32,6 @@ let projectModule = angular.module('project', [
   )
 })
 .component('project', projectComponent)
-
 .name;
 
 export default projectModule;

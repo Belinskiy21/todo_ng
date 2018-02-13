@@ -1,9 +1,8 @@
 class ProjectController {
-  constructor($http, $location, URL, Project, Task, $timeout) {
+  constructor($http, $location, API_URL, Project, Task, $timeout) {
     'ngInject';
     this.$timeout = $timeout;
-    this.URL = URL;
-    this.API_URL = this.URL;
+    this.API_URL = API_URL;
     this.$http = $http;
     this.$location = $location;
     this.Project = Project;

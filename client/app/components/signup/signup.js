@@ -7,18 +7,14 @@ let signupModule = angular.module('signup', [
 ])
 .config(($stateProvider, $urlRouterProvider) => {
   "ngInject";
-
   $urlRouterProvider.otherwise('/login');
-
   $stateProvider
     .state('signup', {
       url: '/signup',
       component: 'signup'
     });
 })
-
 .component('signup', signupComponent)
-
 .name;
 
 export default signupModule;

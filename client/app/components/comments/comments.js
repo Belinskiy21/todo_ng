@@ -6,12 +6,10 @@ import CommentsFactory from './comments.factory';
 let commentsModule = angular.module('comments', [
   uiRouter
 ])
-
 .component('comments', commentsComponent)
 .factory('Comments', CommentsFactory)
-.factory('CommService', function($resource, URL) {
+.factory('CommService', function($resource, API_URL) {
   'ngInject';
-  let API_URL = URL;
   return $resource(
     API_URL + '/api/v1/projects/:project_id/tasks/:task_id/comments/:id', { project_id: '@project_id', task_id: '@task_id', id: '@id' }, {
       update: {
@@ -23,7 +21,6 @@ let commentsModule = angular.module('comments', [
     }
   )
 })
-
 .name;
 
 export default commentsModule;
