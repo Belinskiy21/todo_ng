@@ -17,7 +17,7 @@
         <button class="btn btn-default btn-block" ng-hide="vm.showField">
             <input class="checkbox pull-left" type="checkbox" ng-change="vm.changeStatus(task)" ng-model="task.done">
             <span class="title done-{{task.done}} pull-left">{{task.title}}</span>
-            <span ng-class="task.deadline.setHours(0,0,0,0) > model.today ? 'date pull-left' : 'date-red pull-left'">{{task.deadline}}</span>
+            <span ng-class="vm.CheckDate(task.deadline) ? 'date pull-left' : 'date-red pull-left'">{{task.deadline}}</span>
           <span class="task-controls">
             <i class="pull-right glyphicon glyphicon-trash" ng-click="vm.deleteTask(task)"></i>
             <i class="pull-right glyphicon glyphicon-pencil" ng-click="vm.editTask(task)"></i>

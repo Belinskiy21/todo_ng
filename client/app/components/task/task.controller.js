@@ -15,6 +15,10 @@ class TaskController {
 
   }
 
+  CheckDate(deadline) {
+    return Date.parse(deadline) > this.today
+  }
+
   addTask() {
     let self = this;
     if(!this.task.title || this.task.title === '') { return }
@@ -165,7 +169,6 @@ class TaskController {
   checkComplete(){
     let self = this;
     this.Task.query({ project_id: this.projectid }, function(data) {
-      console.log(data)
       if((data.length > 0) && !(data.map(task => task.done).includes(false))){
           self.onShowMessage({message: 'Well Done! You’re successfully completed all tasks' })
         }

@@ -89,7 +89,9 @@ class ProjectController {
 
   hideDatepicker() {
     this.isOpen = false
-      this.deadline = null
+    this.deadline = null
+    this.$http.put(this.API_URL + `/api/v1/projects/${this.project_id}/tasks/${this.task.id}`,
+      { deadline: this.deadline } )
   }
 
   showMessage(message){
