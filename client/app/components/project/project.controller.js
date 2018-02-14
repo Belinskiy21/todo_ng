@@ -68,7 +68,7 @@ class ProjectController {
   }
 
   openDatepicker(status, task) {
-    var self = this;
+    this.task = task
     this.isOpen = status
     if(this.deadline && status === false ) {
       task.deadline = this.deadline.toDateString()
@@ -78,6 +78,18 @@ class ProjectController {
     else {
       task.deadline = null
     }
+  }
+
+  saveDate() {
+    this.isOpen = false
+    this.task.deadline = this.deadline.toDateString()
+    this.$http.put(this.API_URL + `/api/v1/projects/${this.project_id}/tasks/${this.task.id}`,
+      { deadline: this.task.deadline } )
+  }
+
+  hideDatepicker() {
+    this.isOpen = false
+      this.deadline = null
   }
 
   showMessage(message){

@@ -11,6 +11,7 @@ class TaskController {
     this.myDate = new Date();
     this.open = true;
     this.close = false;
+    this.today = this.myDate.setHours(0, 0, 0, 0);
 
   }
 

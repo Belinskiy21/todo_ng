@@ -48,13 +48,14 @@ tasks="model.projectTasks" projectid="model.project_id"  opened="model.isOpen"  
     <!-- Date picker -->
     <span ng-if="project === model.current_project">
     <div class='col-md-3' ng-show="model.isOpen">
-      <h4>Choose deadline:</h4>
+      <button type="button" class="btn btn-default btn-sm dp-button" ng-click = "model.saveDate()">Save</button>
+      <button type="button" class="btn btn-default btn-sm dp-button-cancel" ng-click = "model.hideDatepicker()">Cancel</button>
       <div class="alert alert-danger" ng-show='model.message'>
         {{model.message}}
       </div>
       <md-datepicker ng-model="model.deadline" md-placeholder="Enter the date..."></md-datepicker></div>
     </span>
-  </div>
+    </div>
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">

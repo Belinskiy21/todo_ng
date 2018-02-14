@@ -58,4 +58,16 @@
   .glyphicon-pencil {
     outline: none;
   }
+  .btn.btn-default.btn-sm.dp-button {
+    margin-left: 38px;
+    font-size: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    // background-color: $navBgColor;
+  }
+  .btn.btn-default.btn-sm.dp-button-cancel {
+    font-size: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
 }
